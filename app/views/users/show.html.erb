@@ -1,0 +1,46 @@
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <h1 class="heading-custom" data-en="User Info">ユーザー情報</h1>
+    <div class="row">
+
+      <div class="col-md-3">
+        <%= render 'users/userinfo', user: @user %>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <div class="text-center btn-admin-custom">
+            <%= link_to admin_requests_path, class: 'btn btn-block text-light font-jp' do %>
+              管理者用ダッシュボードへ
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <section class="search mt-3">
+          <div class="search-form-custom">
+
+          </div>
+        </section>
+        <section class="favorite section-back mt-3">
+
+        </section>
+      </div>
+
+      <div class="col-md-3 sidebar">
+        <section class="latest-review section-back mt-3">
+          <h3 class="latest-review-heading font-al">Latest Review</h3>
+          <p class="font-jp">最新の課金レビュー</p>
+          <div class="review-card">
+
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>

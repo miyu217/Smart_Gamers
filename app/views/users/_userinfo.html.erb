@@ -1,0 +1,29 @@
+<div class="card user-info p-3">
+  <% if @user.id == current_user.id %>
+    <div class="user-info-update ml-auto">
+      <%= link_to edit_user_path(@user), class: 'btn btn-outline-dark rounded-pill btn-sm font-jp' do %>
+        編集 <i class="fa-regular fa-pen-to-square"></i>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="container-fluid">
+    <div class="row user-date mt-1 mb-1">
+      <div class="col-6 col-md-12 d-flex justify-content-center pb-2">
+        <div class="user-date-img">
+          <%= attachment_image_tag @user, :profile_image_id, :fill, 100, 100, format: 'jpeg', fallback: "user.png", size: '100x100' %>
+        </div>
+      </div>
+      <div class="col-6 col-md-12 d-flex align-items-center justify-content-center">
+        <p class="font-jp"><strong><%= @user.name %></strong></p>
+      </div>
+    </div>
+    <div class="row user-intro">
+      <%if @user.introduction.nil? %>
+        <p class="font-jp"><%=@user.introduction%></p>
+      <% else %>
+        <p class="font-jp"><%=safe_join(@user.introduction.split("\n"),tag(:br))%></p>
+      <%end %>
+    </div>
+  </div>
+</div>
