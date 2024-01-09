@@ -26,6 +26,29 @@ class GamesController < ApplicationController
 
   end
 
+  def edit
+    if @game.user == current_user
+      render "edit"
+    else
+      redirect_to games_path
+    end
+  end
+
+  def update
+    @game.user_id = current_user.id
+    if @game.update(game_params)
+      flash[:notice]= "ゲーム情報を編集しました！！"
+      redirect_to game_path(@game.id)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @game.destroy
+    redirect_to games_path
+  end
+
   private
 
   def set_game
