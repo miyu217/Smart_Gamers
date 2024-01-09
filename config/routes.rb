@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'home/about', to: 'homes#about'
 
   resources :users
+  resources :games
 end

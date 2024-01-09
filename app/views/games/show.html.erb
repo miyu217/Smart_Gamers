@@ -1,0 +1,90 @@
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger font-jp">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <h1 class="heading-custom" data-en="Review">レビュー</h1>
+    <section class="game-date section-back mt-3">
+      <h3 class="ml-2 font-jp"><%= link_to @game.title, game_path(@game) %></h3>
+    <div class="row">
+      <div class="col-md-6">
+        <div>
+          <% if current_user %>
+            <% if current_user.favorites.exists?(game: @game) %>
+              <%= link_to game_favorite_path(@game, @game), method: :delete, class: "btn btn-favorite-d-custom-show font-jp" do %>
+                お気に入り登録済み <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to game_favorites_path(@game), method: :post, class: "btn btn-favorite-custom-show font-jp" do %>
+                お気に入り登録済み <i class="fa-regular fa-heart"></i>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <table class="table game-date-table font-jp">
+          <tbody>
+            <tr>
+              <th>ジャンル</th>
+              <td><%= @game.genre %></td>
+            </tr>
+            <tr>
+              <th>対応機種</th>
+              <td><%= @game.status %></td>
+            </tr>
+            <tr>
+              <th>価格</th>
+              <td><%= @game.price %>円</td>
+            </tr>
+            <tr>
+              <th>開発元</th>
+              <td><%= @game.developer %></td>
+            </tr>
+            <tr>
+              <th>リリース日</th>
+              <td><%= @game.release_date %></td>
+            </tr>
+          </tbody>
+        </table>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <div class="game-info-update font-jp">
+              <%= link_to edit_game_path(@game), class: 'btn btn-outline-dark rounded-pill btn-block' do %>
+                ゲーム情報を編集する <i class="fa-regular fa-pen-to-square"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-md-6 mt-3">
+      <table class="table game-date-table font-jp">
+        <tbody>
+          <tr>
+            <th>課金情報</th>
+            <td><%= @game.payment_details %></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    </section>
+    <section class="review-form section-back pr-3 pl-3 mt-3">
+      <h3 class="font-al">New Review</h3>
+      <p class="font-jp"><%= link_to @game.title, game_path(@game) %>の課金レビューを送信してください</p>
+    <div class="row">
+
+    </div>
+    </section>
+    <section class="review-index section-back mt-3">
+      <h3 class="font-al">Billing Review</h3>
+      <p class="font-jp">アプリ内課金についてのレビュー一覧</p>
+
+    </section>
+  </div>
+</main>

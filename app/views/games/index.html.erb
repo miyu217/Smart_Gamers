@@ -1,0 +1,57 @@
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <h1 class="heading-custom" data-en="All Games">ゲーム一覧</h1>
+    <div class="row">
+      <div class="col-md-3">
+        <%= render 'users/userinfo', user: @user %>
+      </div>
+
+      <div class="col-md-9">
+        <section class="search mt-3">
+          <div class="search-form-custom">
+            <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+              <div class="input-group">
+                <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "ゲームを検索" %>
+                <div class="input-group-append">
+                  <button class="btn btn-search-custom text-light" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+        <section class="all-games section-back mt-3">
+          <h3 class="font-al">Games</h3>
+          <table class="table table-hover table-inverse text-center">
+            <tbody>
+              <% @games.each do |game| %>
+              <tr>
+                <td class="align-middle"><%= link_to game.title, game_path(game) %></td>
+                <td class="align-middle"><%= game.genre %></td>
+                <td class="align-middle"><%= link_to game.reviews.count, game_path(game) %> 件のレビュー</td>
+                <td>
+                  <% if current_user %>
+                    <% if current_user.favorited?(game) %>
+                      <%= link_to game_favorite_path(game, current_user.favorites.find_by(game: game)), method: :delete, class: "btn btn-favorite-d-custom" do %>
+                      <i class="fa-solid fa-heart i-custom"></i>
+                      <% end %>
+                    <% else %>
+                      <%= link_to game_favorites_path(game), method: :post, class: "btn btn-favorite-custom" do %>
+                      <i class="fa-regular fa-heart i-custom"></i>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>
