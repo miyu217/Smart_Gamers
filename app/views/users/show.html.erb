@@ -24,7 +24,14 @@
       <div class="col-md-6">
         <section class="search mt-3">
           <div class="search-form-custom">
-
+            <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+              <div class="input-group">
+                <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "ゲームを検索" %>
+                <div class="input-group-append">
+                  <button class="btn btn-search-custom text-light" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            <% end %>
           </div>
         </section>
         <section class="favorite section-back mt-3">

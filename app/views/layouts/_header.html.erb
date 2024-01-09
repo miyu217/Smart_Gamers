@@ -21,7 +21,9 @@
             <% end %>
           </li>
           <li class="nav-item">
-            Games
+            <%= link_to games_path, class:'nav-link' do %>
+              <i class="fas fa-gamepad"></i> Games
+            <% end %>
           </li>
           <li class="nav-item">
             <a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">

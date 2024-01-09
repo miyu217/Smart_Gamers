@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  genre: MyString
+  status: MyString
+  user_id: 1
+  developer: MyString
+  release_date: 2024-01-09
+  price: 1
+  payment_details: MyText
+
+two:
+  title: MyString
+  genre: MyString
+  status: MyString
+  user_id: 1
+  developer: MyString
+  release_date: 2024-01-09
+  price: 1
+  payment_details: MyText

@@ -49,6 +49,12 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
+  def search
+    @query = params[:query]
+    @games = Game.where("title LIKE ? OR genre LIKE ?", "%#{@query}%", "%#{@query}%")
+    @user = User.find(current_user.id)
+  end
+
   private
 
   def set_game
