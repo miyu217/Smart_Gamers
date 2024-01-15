@@ -1,0 +1,30 @@
+<h1>リクエスト詳細</h1>
+
+<main>
+  <div class="admin container px-5 px-sm-0 pt-3">
+    <h1 class="heading-custom" data-en="Dash Board">管理者用ダッシュボード</h1>
+    <div class="row">
+      <div class="col-md-4 new-game-form">
+        <section class="section-back mt-3">
+        <h3 class="font-al">New Game</h3>
+          <%= render 'games/form', model: @game %>
+        </section>
+      </div>
+
+      <div class="col-md-8">
+        <section class="section-back mt-3">
+        <h3 class="font-al">Request</h3>
+          <p><strong>タイトル:</strong> <%= @request.title %></p>
+          <p><strong>詳細:</strong> <%= @request.description %></p>
+          <p><%= link_to user_path(@user) %></p>
+        </section>
+      </div>
+
+  </div>
+  <div class="admin-overlay"></div>
+</div>
+</main>
+
+
+
+

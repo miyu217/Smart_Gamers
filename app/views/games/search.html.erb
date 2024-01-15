@@ -29,7 +29,9 @@
         <p class="font-jp">該当するゲームは見つかりませんでした。</p>
         <h4 class="request-heading font-jp p-1">リクエスト送信ご協力のお願い <i class="fa-solid fa-paper-plane"></i> </h4>
         <p class="font-jp">サイト内のゲーム追加にご協力お願いします。</p>
-
+          <%= link_to new_user_request_path(@user), class: 'btn btn-request-custom' do %>
+            ⇒スマホゲームの追加リクエスト画面へ
+          <% end %>
           <P class="font-jp mt-2">※リクエスト送信後、管理者に承認されれば一週間以内にゲーム一覧に追加されます。
           <br>※Home → リクエスト状況 からご確認ください。
           </P>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_09_060403) do
+ActiveRecord::Schema.define(version: 2024_01_09_071620) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 2024_01_09_060403) do
     t.date "release_date"
     t.integer "price"
     t.text "payment_details"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "description"
+    t.string "approval", default: "承認待ち"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

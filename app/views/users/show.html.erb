@@ -13,11 +13,14 @@
         <% if user_signed_in? %>
           <% if current_user.admin? %>
             <div class="text-center btn-admin-custom">
-            <%= link_to admin_requests_path, class: 'btn btn-block text-light font-jp' do %>
+            <%= link_to admins_path, class: 'btn btn-block text-light font-jp' do %>
               管理者用ダッシュボードへ
             <% end %>
             </div>
           <% end %>
+        <% end %>
+        <%= link_to user_requests_path(@user), class: 'btn btn-block text-light font-jp' do %>
+        リクエスト状況確認
         <% end %>
       </div>
 

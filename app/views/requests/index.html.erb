@@ -1,0 +1,33 @@
+<div class="container mx-auto mt-3">
+  <% if @user.id == current_user.id %>
+  <h2 class="mb-3">リクエスト状況</h2>
+  <div class="row">
+    <table class="table table-hover table-inverse text-center">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+          <th>承認状況</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @requests.each do |request| %>
+        <tr>
+          <td class="align-middle"><%= request.title %></td>
+          <td class="align-middle">
+            <% if request.approval == '承認済み' %>
+          承認済み
+        <% elsif request.approval == '拒否済み' %>
+          拒否済み
+        <% else %>
+          未承認
+        <% end %>
+        </td>
+        <td><%= link_to '詳細', user_request_path(@user,request), class: 'btn btn-show-custom btn-sm' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <% end %>
+</div>

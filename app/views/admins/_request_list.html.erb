@@ -1,0 +1,32 @@
+<table class="table table-hover table-inverse text-center font-jp">
+  <tbody>
+    <% requests.each do |request| %>
+      <tr>
+        <td><%= request.title %></td>
+        <td><%= request.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td>
+          <% if request.approval == '承認済み' %>
+            承認済み
+          <% elsif request.approval == '拒否済み' %>
+            拒否済み
+          <% else %>
+            未承認
+          <% end %>
+        </td>
+        <% if request.approval == '承認待ち' %>
+        <td>
+          <%= link_to '承認', approve_admin_request_path(request), method: :put , data: { confirm: 'Are you sure?' }, class: "btn btn-warning btn-sm " %>
+          <%= link_to '拒否', reject_admin_request_path(request), method: :put, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        </td>
+        <% elsif request.approval == '拒否済み' %>
+        <td>
+          <%= link_to '削除', admin_request_path(request), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+        <% end %>
+      </tr>
+      <tr>
+        <%= request.description %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
