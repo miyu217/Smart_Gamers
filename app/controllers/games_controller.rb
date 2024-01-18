@@ -23,7 +23,8 @@ class GamesController < ApplicationController
 
   def show
     @user = @game.user
-
+    @review = Review.new
+    @reviews = @game.reviews
   end
 
   def edit

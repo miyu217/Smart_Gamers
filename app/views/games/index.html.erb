@@ -34,17 +34,7 @@
                 <td class="align-middle"><%= game.genre %></td>
                 <td class="align-middle"><%= link_to game.reviews.count, game_path(game) %> 件のレビュー</td>
                 <td>
-                  <% if current_user %>
-                    <% if current_user.favorited?(game) %>
-                      <%= link_to game_favorite_path(game, current_user.favorites.find_by(game: game)), method: :delete, class: "btn btn-favorite-d-custom" do %>
-                      <i class="fa-solid fa-heart i-custom"></i>
-                      <% end %>
-                    <% else %>
-                      <%= link_to game_favorites_path(game), method: :post, class: "btn btn-favorite-custom" do %>
-                      <i class="fa-regular fa-heart i-custom"></i>
-                      <% end %>
-                    <% end %>
-                  <% end %>
+
                 </td>
               </tr>
               <% end %>

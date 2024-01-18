@@ -1,5 +1,6 @@
 class Game < ApplicationRecord
   belongs_to :user
+  has_many :reviews, dependent: :destroy
 
   validates :title, presence: true
   validates :status, inclusion: { in: %w(ios android), message: "はiOSまたはAndroidである必要があります" }

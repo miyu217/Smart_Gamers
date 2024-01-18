@@ -16,17 +16,7 @@
     <div class="row">
       <div class="col-md-6">
         <div>
-          <% if current_user %>
-            <% if current_user.favorites.exists?(game: @game) %>
-              <%= link_to game_favorite_path(@game, @game), method: :delete, class: "btn btn-favorite-d-custom-show font-jp" do %>
-                お気に入り登録済み <i class="fa-solid fa-heart"></i>
-              <% end %>
-            <% else %>
-              <%= link_to game_favorites_path(@game), method: :post, class: "btn btn-favorite-custom-show font-jp" do %>
-                お気に入り登録済み <i class="fa-regular fa-heart"></i>
-              <% end %>
-            <% end %>
-          <% end %>
+
         </div>
         <table class="table game-date-table font-jp">
           <tbody>
@@ -78,13 +68,40 @@
       <h3 class="font-al">New Review</h3>
       <p class="font-jp"><%= link_to @game.title, game_path(@game) %>の課金レビューを送信してください</p>
     <div class="row">
-
+      <%= render 'reviews/review_form', model: [@game, @review] %>
     </div>
     </section>
     <section class="review-index section-back mt-3">
       <h3 class="font-al">Billing Review</h3>
       <p class="font-jp">アプリ内課金についてのレビュー一覧</p>
-
+      <% if @reviews.any? %>
+      <div class="review-cards">
+        <% @reviews.each do |review| %>
+          <div class="card m-3 p-3">
+            <div class="card-title font-jp d-flex">
+              <h4><%= review.package_name %></h4>
+              <p class="ml-auto"><%= review.spent_amount %>円</p>
+            </div>
+            <h5><%= link_to display_rating_icon(review.rating), game_review_path(@game, review) %></h5>
+            <p class="review-text mt-1 font-jp"><%= review.comment %></p>
+            <p class="font-jp"><%= review.user.name %>_
+            <% case review.seriousness_rating %>
+              <% when 'max' %>
+                ガチ勢
+              <% when 'normal' %>
+                こつこつ勢
+              <% when 'low' %>
+                のんびり勢
+              <% else %>
+                評価なし
+            <% end %>
+            _ <%= review.created_at&.strftime('%Y/%m/%d') %></p>
+          </div>
+        <% end %>
+      </div>
+      <% else %>
+          <p class="font-jp">レビューはまだありません。</p>
+      <% end %>
     </section>
   </div>
 </main>

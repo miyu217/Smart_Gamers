@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_09_071620) do
+ActiveRecord::Schema.define(version: 2024_01_15_025637) do
 
   create_table "games", force: :cascade do |t|
     t.string "title"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 2024_01_09_071620) do
     t.string "title"
     t.text "description"
     t.string "approval", default: "承認待ち"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "game_id"
+    t.integer "rating"
+    t.text "comment"
+    t.integer "helpful_count"
+    t.decimal "spent_amount"
+    t.string "seriousness_rating"
+    t.string "package_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
