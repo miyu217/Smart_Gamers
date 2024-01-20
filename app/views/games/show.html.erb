@@ -16,7 +16,17 @@
     <div class="row">
       <div class="col-md-6">
         <div>
-
+          <% if current_user %>
+            <% if current_user.favorites.exists?(game: @game) %>
+              <%= link_to game_favorite_path(@game, @game), method: :delete, class: "btn btn-favorite-d-custom-show font-jp" do %>
+                お気に入り登録済み <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to game_favorites_path(@game), method: :post, class: "btn btn-favorite-custom-show font-jp" do %>
+                お気に入り登録済み <i class="fa-regular fa-heart"></i>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
         <table class="table game-date-table font-jp">
           <tbody>

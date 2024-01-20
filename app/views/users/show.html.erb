@@ -38,7 +38,13 @@
           </div>
         </section>
         <section class="favorite section-back mt-3">
-
+          <h3 class="font-al"><%= @user.name %>'s Game</h3>
+          <p class="font-jp">お気に入り登録済みのゲーム</p>
+          <% @user.favorite_games.each do |game| %>
+            <ul class="favorite-list-custom">
+              <li class="align-middle"><%= link_to game.title, game_path(game) %></li>
+            </ul>
+          <% end %>
         </section>
       </div>
 

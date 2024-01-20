@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         post 'toggle_good'
       end
     end
+    resources :favorites, only: [:create, :destroy]
   end
 
   resources :admins do
