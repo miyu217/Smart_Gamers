@@ -53,7 +53,18 @@
           <h3 class="latest-review-heading font-al">Latest Review</h3>
           <p class="font-jp">最新の課金レビュー</p>
           <div class="review-card">
-
+            <% if @latest_review %>
+              <h5 class="review-card-title pb-1"><%= link_to @latest_review.game.title, game_path(@game) %></h5>
+              <h5 class="font-jp pb-2">
+              <i class="fa-solid fa-wallet"></i> <%= @latest_review.package_name %>
+              </h5>
+              <p class="font-jp">
+              <%= display_rating_icon(@latest_review.rating) %>
+              <br>
+              <%= @latest_review.comment %></p>
+            <% else %>
+              <p class="font-jp">このユーザーの課金レビューはありません。</p>
+            <% end %>
           </div>
         </section>
       </div>

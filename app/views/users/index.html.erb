@@ -19,7 +19,7 @@
             <tr>
               <td><%= attachment_image_tag user, :profile_image_id, :fill, 50, 50, format: 'jpeg', fallback: "user.png", size: '50x50' %></td>
               <td class="align-middle"><%= link_to user.name, user_path(user) %></td>
-              <td class="align-middle">件の課金レビュー</td>
+              <td class="align-middle"><%= link_to user.reviews.count, user_path(user) %> 件の課金レビュー</td>
               <td class="align-middle"><%= link_to '詳細', user_path(user.id), class: 'btn btn-outline-secondary' %></td>
             </tr>
             <% end %>

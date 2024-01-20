@@ -27,17 +27,17 @@ class AdminsController < ApplicationController
 
   def approve
     if @request.approve!
-      redirect_to admin_requests_path, notice: 'リクエストが承認されました。'
+      redirect_to admins_path, notice: 'リクエストが承認されました。'
     else
-      redirect_to admin_requests_path, alert: 'リクエストの承認に失敗しました。'
+      redirect_to admins_path, alert: 'リクエストの承認に失敗しました。'
     end
   end
 
   def reject
     if @request.reject!
-      redirect_to admin_requests_path, notice: 'リクエストが拒否されました。'
+      redirect_to admins_path, notice: 'リクエストが拒否されました。'
     else
-      redirect_to admin_requests_path, alert: 'リクエストの拒否に失敗しました。'
+      redirect_to admins_path, alert: 'リクエストの拒否に失敗しました。'
     end
   end
 
