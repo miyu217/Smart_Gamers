@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_01_18_053743) do
+ActiveRecord::Schema.define(version: 2024_02_12_023148) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2024_01_18_053743) do
     t.string "approval", default: "承認待ち"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "review_votes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["review_id"], name: "index_review_votes_on_review_id"
+    t.index ["user_id"], name: "index_review_votes_on_user_id"
   end
 
   create_table "reviews", force: :cascade do |t|

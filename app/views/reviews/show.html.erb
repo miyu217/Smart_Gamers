@@ -24,7 +24,17 @@
         <section class="game-date section-back mt-3">
           <h3 class="ml-2 font-jp"><%= link_to @game.title, game_path(@game) %></h3>
           <div>
-
+            <% if current_user %>
+              <% if current_user.favorites.exists?(game: @game) %>
+                <%= link_to game_favorite_path(@game), method: :delete, class: "btn btn-favorite-d-custom-show" do %>
+                  お気に入り登録済み <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to game_favorites_path(@game), method: :post, class: "btn btn-favorite-custom-show" do %>
+                  お気に入り登録済み <i class="fa-regular fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% end %>
           </div>
           <table class="table game-date-table">
             <tbody>
@@ -69,7 +79,15 @@
               </div>
               <h5 class="card-text"><%= display_rating_icon(@review.rating) %></h5>
               <p class="card-text font-jp"><%= @review.comment %></p>
-
+              <% if @review.voted_for?(current_user) %>
+                <%= link_to toggle_good_game_review_path(@game, @review), method: :post do %>
+                  <i class="fa-solid fa-thumbs-up"></i> <%= @review.helpful_count %>
+                <% end %>
+              <% else %>
+                <%= link_to toggle_good_game_review_path(@game, @review), method: :post do %>
+                  <i class="fa-regular fa-thumbs-up"></i> <%= @review.helpful_count %>
+                <% end %>
+              <% end %>
               <p class="font-jp pt-2"><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "user.png", size: '40x40' %>
                 <%= link_to @review.user.name, user_path(@review.user) %> _
                 <% case @review.seriousness_rating %>
