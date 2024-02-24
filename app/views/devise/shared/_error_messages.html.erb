@@ -1,0 +1,14 @@
+<% if resource.errors.any? %>
+  <div class="alert alert-danger">
+    <div id="error_explanation" data-turbo-cache="false">
+      <h5 class="font-jp">
+        以下の項目を修正してください。
+      </h5>
+      <ul>
+        <% resource.errors.full_messages.each do |message| %>
+          <li class="font-jp">・<%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

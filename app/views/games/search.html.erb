@@ -1,0 +1,39 @@
+<div class="container">
+  <section class="search">
+    <div class="search-form-custom mt-3">
+      <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+      <div class="input-group">
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "ゲームを検索" %>
+        <div class="input-group-append">
+          <button class="btn btn-search-custom text-light" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="search-result section-back mt-3">
+  <h2 class="font-jp">検索結果</h2>
+  <% if @games.any? %>
+    <div class="card search-result">
+      <% @games.each do |game| %>
+      <ul>
+        <li class="search-title">
+          <%= link_to game.title, game %>
+        </li>
+        <li class="category">
+          <%= game.genre %>
+        </li>
+      </ul>
+      <% end %>
+      <% else %>
+        <p class="font-jp">該当するゲームは見つかりませんでした。</p>
+        <h4 class="request-heading font-jp p-1">リクエスト送信ご協力のお願い <i class="fa-solid fa-paper-plane"></i> </h4>
+        <p class="font-jp">サイト内のゲーム追加にご協力お願いします。</p>
+          <%= link_to new_user_request_path(@user), class: 'btn btn-request-custom' do %>
+            ⇒スマホゲームの追加リクエスト画面へ
+          <% end %>
+          <P class="font-jp mt-2">※リクエスト送信後、管理者に承認されれば一週間以内にゲーム一覧に追加されます。
+          <br>※Home → リクエスト状況 からご確認ください。
+          </P>
+      <% end %>
+    </div>

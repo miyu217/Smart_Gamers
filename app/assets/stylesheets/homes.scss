@@ -1,0 +1,82 @@
+// Place all the styles related to the homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.top-bg {
+  background-image: linear-gradient(rgba(13,0,21,0.8),rgba(67,53,99,0.8)),url("phone2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  height: 89.6vh;
+}
+
+.log-custom a {
+  font-family: 'Chakra Petch', sans-serif;
+  font-size: 25px;
+}
+
+.top-p {
+  color: #f4fffd;
+}
+
+.top-p .fa-mobile-screen-button {
+  font-size: 25px;
+  color: #ed254e;
+}
+
+.top-heading-text {
+  padding-bottom: 50px;
+}
+
+.head-text,.heading,.heading-font,.center-font {
+  font-family: 'Silkscreen', cursive;
+  color: #f4fffd;
+  font-size: 60px;
+}
+
+.heading-font {
+  color: #f9ba32;
+}
+
+.about-bg {
+  background-image: linear-gradient(rgba(13,0,21,0.8),rgba(67,53,99,0.8)),url("iphone-smart.jpg");
+  background-size: cover;
+  background-position: bottom;
+  height: 40vh;
+}
+
+.about-heading {
+  font-family: 'DotGothic16', sans-serif;
+  color: #f4fffd;
+  padding-top: 50px;
+}
+
+.about-p {
+  color: #f4fffd;
+}
+
+@media only screen and (max-width: 768px){
+  .top-heading {
+    top: 8%;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .log-custom a {
+    font-size: 25px;
+  }
+
+  .about-bg {
+    background-image: linear-gradient(rgba(13,0,21,0.8),rgba(13,0,21,0.8)),url("iphone-smart.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+  }
+
+  .about-heading {
+    font-size: 38px;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+}

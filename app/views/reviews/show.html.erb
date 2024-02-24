@@ -1,0 +1,120 @@
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <h1 class="heading-custom" data-en="Review">レビュー</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <section class="search mt-3">
+          <div class="search-form-custom">
+            <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+            <div class="input-group">
+              <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "ゲームを検索" %>
+              <div class="input-group-append">
+                <button class="btn btn-search-custom text-light" type="submit"><i class="fa fa-search"></i></button>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </section>
+
+        <section class="game-date section-back mt-3">
+          <h3 class="ml-2 font-jp"><%= link_to @game.title, game_path(@game) %></h3>
+          <div>
+            <% if current_user %>
+              <% if current_user.favorites.exists?(game: @game) %>
+                <%= link_to game_favorite_path(@game), method: :delete, class: "btn btn-favorite-d-custom-show" do %>
+                  お気に入り登録済み <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to game_favorites_path(@game), method: :post, class: "btn btn-favorite-custom-show" do %>
+                  お気に入り登録済み <i class="fa-regular fa-heart"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <table class="table game-date-table">
+            <tbody>
+              <tr>
+                <th>ジャンル</th>
+                <td><%= @game.genre %></td>
+              </tr>
+              <tr>
+                <th>対応機種</th>
+                <td><%= @game.status %></td>
+              </tr>
+              <tr>
+                <th>価格</th>
+                <td><%= @game.price %>円</td>
+              </tr>
+              <tr>
+                <th>開発元</th>
+                <td><%= @game.developer %></td>
+              </tr>
+              <tr>
+                <th>リリース日</th>
+                <td><%= @game.release_date %></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+
+      <div class="col-md-6">
+        <section class="review-show section-back mt-3">
+          <h3 class="font-al">
+            <%= link_to game_path(@game), class:'btn btn-outline-dark rounded-pill btn-sm' do %>
+            <i class="fa-solid fa-arrow-left"></i>
+            <% end %>
+            Review
+          </h3>
+          <div class="card m-3">
+            <div class="card-body">
+              <div class="card-title font-jp d-flex">
+                <h4><%= @review.package_name %></h4>
+                <p class="ml-auto">課金額：<%= @review.spent_amount %>円</p>
+              </div>
+              <h5 class="card-text"><%= display_rating_icon(@review.rating) %></h5>
+              <p class="card-text font-jp"><%= @review.comment %></p>
+              <% if @review.voted_for?(current_user) %>
+                <%= link_to toggle_good_game_review_path(@game, @review), method: :post do %>
+                  <i class="fa-solid fa-thumbs-up"></i> <%= @review.helpful_count %>
+                <% end %>
+              <% else %>
+                <%= link_to toggle_good_game_review_path(@game, @review), method: :post do %>
+                  <i class="fa-regular fa-thumbs-up"></i> <%= @review.helpful_count %>
+                <% end %>
+              <% end %>
+              <p class="font-jp pt-2"><%= attachment_image_tag @user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "user.png", size: '40x40' %>
+                <%= link_to @review.user.name, user_path(@review.user) %> _
+                <% case @review.seriousness_rating %>
+                  <% when 'max' %>
+                    ガチ勢
+                  <% when 'normal' %>
+                    こつこつ勢
+                  <% when 'low' %>
+                    のんびり勢
+                  <% else %>
+                    評価なし
+                <% end %>
+                 _<%= @review.created_at.strftime('%Y/%m/%d') %></p>
+                <% if current_user && current_user == @review.user %>
+                  <div class="review-update mx-auto">
+                    <%= link_to edit_game_review_path(@game, @review) do %>
+                      編集 <i class="fa-regular fa-pen-to-square"></i>
+                    <% end %>
+                    |
+                    <%= link_to game_review_path(@game, @review), method: :delete, data: { confirm: "本当に削除しますか？" } do %>
+                      削除 <i class="fa-solid fa-trash"></i>
+                    <% end %>
+                  </div>
+                <% end %>
+            </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>

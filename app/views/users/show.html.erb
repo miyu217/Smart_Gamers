@@ -1,0 +1,75 @@
+<main>
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <h1 class="heading-custom" data-en="User Info">ユーザー情報</h1>
+    <div class="row">
+
+      <div class="col-md-3">
+        <%= render 'users/userinfo', user: @user %>
+        <% if user_signed_in? %>
+          <% if current_user.admin? %>
+            <div class="text-center btn-admin-custom">
+            <%= link_to admins_path, class: 'btn btn-block text-light font-jp' do %>
+              管理者用ダッシュボードへ
+            <% end %>
+            </div>
+          <% end %>
+            <div class="text-center btn-admin-custom">
+              <%= link_to user_requests_path(@user), class: 'btn btn-block text-light font-jp' do %>
+              リクエスト状況確認
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+
+      <div class="col-md-6">
+        <section class="search mt-3">
+          <div class="search-form-custom">
+            <%= form_tag(search_path, method: "get", class: "form-inline") do %>
+              <div class="input-group">
+                <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "ゲームを検索" %>
+                <div class="input-group-append">
+                  <button class="btn btn-search-custom text-light" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </section>
+        <section class="favorite section-back mt-3">
+          <h3 class="font-al"><%= @user.name %>'s Game</h3>
+          <p class="font-jp">お気に入り登録済みのゲーム</p>
+          <% @user.favorite_games.each do |game| %>
+            <ul class="favorite-list-custom">
+              <li class="align-middle"><%= link_to game.title, game_path(game) %></li>
+            </ul>
+          <% end %>
+        </section>
+      </div>
+
+      <div class="col-md-3 sidebar">
+        <section class="latest-review section-back mt-3">
+          <h3 class="latest-review-heading font-al">Latest Review</h3>
+          <p class="font-jp">最新の課金レビュー</p>
+          <div class="review-card">
+            <% if @latest_review %>
+              <h5 class="review-card-title pb-1"><%= link_to @latest_review.game.title, game_path(@game) %></h5>
+              <h5 class="font-jp pb-2">
+              <i class="fa-solid fa-wallet"></i> <%= @latest_review.package_name %>
+              </h5>
+              <p class="font-jp">
+              <%= display_rating_icon(@latest_review.rating) %>
+              <br>
+              <%= @latest_review.comment %></p>
+            <% else %>
+              <p class="font-jp">このユーザーの課金レビューはありません。</p>
+            <% end %>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</main>

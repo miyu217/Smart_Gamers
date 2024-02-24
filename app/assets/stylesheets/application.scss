@@ -1,0 +1,229 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&family=Silkscreen&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #f9dc5c;
+}
+
+body {
+  background-color: #f4fffd;
+}
+
+a {
+  color: #011936;
+}
+
+h1,h2,h3,p {
+  color: #011936;
+}
+
+.font-jp {
+  font-family: 'Kiwi Maru', serif;
+}
+
+.font-al {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-home {
+  font-family: 'Chakra Petch', sans-serif;
+  font-weight: bold;
+}
+
+.navbar {
+  font-size: 20px;
+}
+
+.navbar-brand {
+  font-size: 27px;
+  color: #011936;
+}
+
+.navbar-brand:hover {
+  color: #ed254e;
+}
+
+.navbar-toggler {
+  border-color: #011936;
+}
+
+.navbar-toggler-icon i {
+  font-size: 25px;
+  color: #011936;
+  padding: 3px;
+}
+
+.navbar-toggler-icon i:hover {
+  color: #ed254e;
+}
+
+.nav-link {
+  color: #011936;
+}
+
+.nav-link:hover {
+  color: #ed254e;
+}
+
+.heading-custom {
+  font-family: 'Kiwi Maru', serif;
+	position: relative;
+	padding-top: 45px;
+	font-size: 25px;
+	border-bottom: 1px solid rgba(5,62,98,1);
+}
+
+.heading-custom::before {
+  font-family: 'Zen Dots', sans-serif;
+	content: attr(data-en);
+	position: absolute;
+	top: 0px;
+	left: 0;
+	color: rgba(5,62,98,0.2);
+	font-size: 50px;
+	text-transform: uppercase;
+	z-index: 1;
+}
+
+.section-back {
+  border-top: 3px solid #7159A6;
+  background-color: #fff;
+  padding: 5px;
+}
+
+.user-info {
+  background: #f9dc5c;
+}
+
+.search-form-custom .btn-search-custom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 45px;
+    border: none;
+    background-color: #7159A6;
+    cursor: pointer;
+}
+
+.btn-search-custom:hover {
+  background-color: #433563;
+}
+
+.search-form-custom .form-inline {
+  display: block;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  border: 2px solid #7159A6;
+  border-radius: 25px;
+}
+
+.search-form-custom input {
+  width: 100%;
+  height: 45px;
+  padding: 5px 15px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 1em;
+  outline: none;
+}
+
+.search-form-custom input::placeholder{
+    color: #767d83;
+}
+
+.btn-favorite-custom-show {
+  border: 1px solid #ed254e;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  color: #ff0000;
+}
+
+.btn-favorite-custom-show:hover {
+  color: #f4fffd;
+  background-color: #ed254e;
+  transform: scale(1.1);
+}
+
+.btn-favorite-d-custom-show {
+  color: #f4fffd;
+  border: 1px solid #ed254e;
+  border-radius: 15px;
+  margin-bottom: 10px;
+  background-color: #ed254e;
+}
+
+.btn-favorite-d-custom-show:hover {
+  color: #ed254e;
+  background-color: #f4fffd;
+  transform: scale(1.1);
+}
+
+@media only screen and (max-width: 768px){
+  .navbar-nav {
+    margin-top: 20px;
+  }
+
+  .nav-item {
+    padding-left: 20px;
+  }
+
+  .nav-item:hover {
+    background-color: #ed254e;
+  }
+
+  .nav-link:hover {
+    color: #011936;
+  }
+
+  .tab-label:hover {
+    background-color: #fff;
+  }
+
+  .tab-link:hover {
+    background-color: #7159A6;
+  }
+
+  .geme-review {
+    padding: 30px 0;
+  }
+
+  .game-date-table th,
+  .game-date-table td {
+    width: 100%;
+    display: block;
+  }
+
+  .game-date-table td {
+    padding-top: 5px;
+    border-top: none;
+  }
+}

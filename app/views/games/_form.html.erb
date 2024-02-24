@@ -1,0 +1,42 @@
+<%= form_with model: @game, local:true do |f| %>
+  <div class="form-group font-jp">
+    <label for="game_title">ゲームタイトル</label>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <label for="game_status" class="font-jp">対応機種</label>
+    <div class="form-check mb-1">
+      <%= f.check_box :status, { class: 'form-check-input' }, 'ios', nil %>
+      <%= label_tag 'game_status_ios', 'iOS' %>
+    </div>
+    <div class="form-check">
+      <%= f.check_box :status, { class: 'form-check-input' }, 'android', nil %>
+      <%= label_tag 'game_status_android', 'Android' %>
+    </div>
+  </div>
+
+  <div class="form-group font-jp">
+    <label for="game_genre">ジャンル</label>
+    <%= f.select :genre, [["シミュレーション","シミュレーション"],["パズル","パズル"],["RPG","RPG"],["アクション","アクション"],["アドベンチャー","アドベンチャー"],["パズル","パズル"],["育成","育成"],["ボード","ボード"],["スポーツ","スポーツ"],["レーシング","レーシング"],["音楽","音楽"],["その他","その他"]], {include_blank: "選択してください"}, class: 'form-control' %>
+  </div>
+  <div class="form-group font-jp">
+    <label for="game_release">リリース日</label>
+    <%= f.date_field :release_date, class: 'form-control'%>
+  </div>
+  <div class="form-group font-jp">
+    <label for="game_developer">開発者</label>
+    <%= f.text_field :developer, class: 'form-control' %>
+  </div>
+  <div class="form-group font-jp">
+    <label for="game_price">価格</label>
+    <%= f.number_field :price, class: 'form-control' %>
+  </div>
+  <div class="form-group font-jp">
+    <label for="game_price">課金情報</label>
+    <%= f.text_area :payment_details, class: 'form-control',placeholder: "課金情報を記入" %>
+  </div>
+
+  <div class="form-group font-jp">
+    <button type="submit" class="btn btn-block btn-danger">ゲームを追加</button>
+  </div>
+<% end %>

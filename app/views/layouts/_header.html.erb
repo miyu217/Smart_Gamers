@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container font-home">
+      <a class="navbar-brand" href="/">
+        <span>Smart Gamers</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto font-home">
+          <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to user_path(current_user.id), class:'nav-link' do %>
+              <i class="fas fa-home"></i> Home
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to users_path, class:'nav-link' do %>
+              <i class="fas fa-users"></i> Users
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to games_path, class:'nav-link' do %>
+              <i class="fas fa-gamepad"></i> Games
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" rel="nofollow" data-method="delete" href="/users/sign_out">
+              <i class="fas fa-sign-out-alt"></i> Log out
+            </a>
+          </li>
+          <% else %>
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              <i class="fas fa-home"></i> Home
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/home/about">
+              <i class="fas fa-link"></i> About
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_up">
+              <i class="fas fa-user-plus"></i> Sign up
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign_in">
+              <i class="fas fa-sign-in-alt"></i> Log in
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

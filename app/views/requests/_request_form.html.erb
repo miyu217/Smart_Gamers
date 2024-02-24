@@ -1,0 +1,26 @@
+<%= form_with(model:[@user,@request]) do |f| %>
+  <% if @request.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger font-jp">
+      <h5>以下の項目を修正してください。</h5>
+      <ul>
+        <% @request.errors.full_messages.each do |message| %>
+          <li>・<%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <label for="request_title"><i class="fa-solid fa-check"></i> 追加したいゲームのタイトル</label>
+    <%= f.text_field :title, class: 'form-control' %>
+    <p class="font-jp">※スマホゲーム以外・アプリ内課金なしのゲームはリクエストを拒否させていただきますのでご了承ください。</p>
+  </div>
+
+  <div class="form-group">
+    <label for="request_title"><i class="fa-solid fa-check"></i> ゲーム詳細（任意）</label>
+    <br>
+      <%= f.text_field :discription, class: 'form-control' %>
+  </div>
+  <div class="form-btn mb-3">
+    <button type="submit" class="btn btn-block btn-danger">リクエストを送信</button>
+  </div>
+<% end %>

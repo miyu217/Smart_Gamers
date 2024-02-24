@@ -1,0 +1,48 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.user-intro {
+  padding: 10px;
+  border-top: solid 1px #011936;
+}
+
+.user-info-update i {
+  font-size: 20px;
+}
+
+.btn-admin-custom {
+  margin-top: 30px;
+  background-color: #ed254e;
+  border-radius: 7px;
+}
+
+.btn-admin-custom:hover,
+.btn-admin-custom:focus {
+  background-color: #C91139;
+}
+
+.favorite-list-custom {
+  list-style-type: none;
+  margin-bottom: 1px;
+  padding: 5px;
+}
+
+.favorite-list-custom li {
+  padding: .5em .7em;
+  background-color: #f4f4f4;
+  font-weight: 600;
+}
+
+.review-card {
+  padding: 10px;
+  border: solid 1px rgba(5,62,98,0.5);
+  border-radius: 7px;
+}
+
+.review-card-title {
+  border-bottom: 1px solid rgba(5,62,98,0.5);
+}
+
+.review-card i {
+  font-size: 20px;
+}

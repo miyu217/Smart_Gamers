@@ -1,0 +1,23 @@
+ja:
+  activerecord:
+    attributes:
+      review:
+        seriousness_rating: "本気度"
+        package_name: "課金した内容"
+        spent_amount: "課金額"
+        rating: "おすすめ度"
+        comment: "課金した感想・コメント"
+    errors:
+      models:
+        review:
+          attributes:
+            seriousness_rating:
+              blank: "を三つの中から選択してください"
+            package_name:
+              blank: "を入力してください"
+            spent_amount:
+              not_a_number: "は数値で入力してください"
+            rating:
+              blank: "を選択してください"
+            comment:
+              too_long: "は最大%{count}文字までです"
