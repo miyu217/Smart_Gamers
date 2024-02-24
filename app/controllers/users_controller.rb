@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @game = Game.find(params[:id])
     @latest_review = @user.reviews.last
+    if @latest_review.present?
+      @game = Game.find(params[:id])
+    else
+      @game = "No reviews available"
+    end
   end
 
   def index

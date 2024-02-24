@@ -18,9 +18,11 @@
             <% end %>
             </div>
           <% end %>
-        <% end %>
-        <%= link_to user_requests_path(@user), class: 'btn btn-block text-light font-jp' do %>
-        リクエスト状況確認
+            <div class="text-center btn-admin-custom">
+              <%= link_to user_requests_path(@user), class: 'btn btn-block text-light font-jp' do %>
+              リクエスト状況確認
+              <% end %>
+            </div>
         <% end %>
       </div>
 

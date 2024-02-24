@@ -1,10 +1,10 @@
 <main>
-  <% if flash[:notice] %>
-    <div class="alert alert-success font-jp">
-      <%= flash[:notice] %>
-    </div>
-  <% end %>
-  <div class="container px-5 px-sm-0">
+  <div class="container px-5 px-sm-0 mt-3">
+    <% if flash[:notice] %>
+      <div class="alert alert-success font-jp">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <h1 class="heading-custom" data-en="All Users">ユーザー一覧</h1>
     <div class="row">
       <div class="col-md-3">
